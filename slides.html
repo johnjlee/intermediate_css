@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<!--
+    Google HTML5 slide template
+
+    Authors: Luke Mahé (code)
+    Marcin Wichary (code and design)
+
+    Dominic Mazzoni (browser compatibility)
+    Charles Chen (ChromeVox support)
+
+    URL: http://code.google.com/p/html5slides/
+  -->
+
+<html>
+  <head>
+    <title>Intermediate CSS</title>
+
+    <meta charset='utf-8'>
+    <script src='slides.js'></script>
+    <script src='editor.js'></script>
+    <link rel="stylesheet" href="editor.css" />
+  </head>
+
+  <style>
+  </style>
+
+  <body style='display: none' onload='setUpEditors()'>
+
+    <section class='slides layout-regular'>
+
+      <article>
+        <h1>
+          <div style="width: 500px; height: 150px; border:1px solid black; position: relative">
+            <div style="position:absolute; width: 800px">
+              Intermediate CSS
+              <br />
+              for people who hate CSS
+            </div>
+          </div>
+        </h1>
+        <p>
+          John Lee
+          <br />
+          October 27, 2012
+        </p>
+      </article>
+
+      <article>
+        <h3>What we'll cover</h3>
+        <ul>
+          <li>How browsers render some CSS properties</li>
+          <li>Examples of common layout issues</li>
+          <li>Some of the dirty secrets of CSS</li>
+          <li>Prototyping/debugging methods</li>
+        </ul>
+
+        <br />
+        <h3>Not covered</h3>
+        <ul>
+          <li>Basic HTML or JS</li>
+          <li>CSS3 transitions/animations</li>
+          <li>3D transforms</li>
+          <li>Making things work in old versions of IE</li>
+      </article>
+
+      <article>
+        <h3>Background (1/3): HTML and CSS</h3>
+        <ul>
+          <li>An HTML page is a <b>tree</b> of <b>elements</b></li>
+          <li>Apply a <b>style</b> to an <b>element</b> to specify what it looks like</li>
+          <li>Can be inline or in a stylesheet</li>
+        </ul>
+
+        <div class="editor">
+          <div><textarea>
+              <style>
+                div {
+                  color: blue;
+                }
+              </style>
+
+              <div>
+                This text is blue
+              </div>
+
+              <div style="color: red">
+                But inline styles always win
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+      </article>
+
+      <article>
+        <h3>Background (2/3): CSS selectors</h3>
+        <ul>
+          <li>Selecting tags
+            <div class="editor" style="height: 120px">
+              <div><textarea>
+                  <style>
+                    body { font-family: arial; }
+                    span { color: green; }
+                  </style>
+
+                  Hello <span>world</span>!
+              </textarea></div>
+              <div><iframe></iframe></div>
+            </div>
+          </li>
+
+
+          <li>Selecting classes and IDs
+            <div class="editor" style="height: 220px">
+              <div><textarea>
+                  <style>
+                    .X { font-weight: bold; }
+                    #Y { text-decoration: underline; }
+                  </style>
+
+                  <a class="X" href="http://google.com">This</a> is
+                  <span class="X">something</span>!
+
+                  <div id="Y">This whole thing has an ID of Y.</div>
+              </textarea></div>
+              <div><iframe></iframe></div>
+            </div>
+          </li>
+      </article>
+
+
+      <article>
+        <h3>Background (3/3): More CSS selectors</h3>
+        <ul>
+          <li>Nested selectors
+            <div class="editor" style="height: 220px">
+              <div><textarea>
+                  <style>
+                    .outer .inner { opacity: 0.2; }
+                  </style>
+
+                  <span class="outer">
+                    OUTER
+                    <span class="middle">
+                      <span class="inner">INNER</span>
+                    </span>
+                  </span>
+
+                  <div class="inner">Nope!</div>
+              </textarea></div>
+              <div><iframe></iframe></div>
+            </div>
+          </li>
+
+
+          <li>Selecting classes and IDs
+            <div class="editor" style="height: 220px">
+              <div><textarea>
+                  <style>
+                    .outer > .inner { font-style: italic; }
+                  </style>
+
+                  <span class="outer">
+                    <span class="middle">
+                      <span class="inner">No</span>
+                    </span>
+                  </span>
+                  <br>
+                  <span class="outer">
+                    <span class="inner">Yes</span>
+                  </span>
+              </textarea></div>
+              <div><iframe></iframe></div>
+            </div>
+          </li>
+      </article>
+
+
+      <article class="smaller">
+        <h3>test</h3>
+        <p>asdfsdlfk asdlkf j</p>
+      </article>
+
+      <article>
+        <h3>test</h3>
+        <p>asdfsdlfk asdlkf j</p>
+      </article>
+    </section>
+  </body>
+</html>
