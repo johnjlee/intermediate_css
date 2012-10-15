@@ -175,15 +175,162 @@
           </li>
       </article>
 
+      <article>
+        <h3>The <css>display</css> property</h3>
+        <br>
+        <div class="editor" style="height: 60%">
+              <div><textarea>
+                  <style>
+                    div { font-size: 20px;
+                          border: 1px solid teal; }
+                    .inline { display: inline; }
+                    .block { display: block; }
+                  </style>
 
-      <article class="smaller">
-        <h3>test</h3>
-        <p>asdfsdlfk asdlkf j</p>
+                  <div class="inline">Inline elements</div>
+                  <div class="inline">are laid out</div>
+                  <div class="inline">horizontally and</div>
+                  <div class="inline">will wrap around</div>
+                  <div class="inline">when they fill</div>
+                  <div class="inline">the width of the</div>
+                  <div class="inline">parent element.</div>
+
+                  <br><br>
+
+                  <div class="block">Block elements</div>
+                  <div class="block">always fill the</div>
+                  <div class="block">width of the parent.</div>
+                </textarea></div>
+              <div><iframe></iframe></div>
+            </div>
+
+        <p>
+          By default, <tag>&lt;span&gt;</tag> tags have <b><css>display:inline</css></b><br> and <tag>&lt;div&gt;</tag> tags have <b><css>display:block</css></b>.
+        </p>
       </article>
 
       <article>
-        <h3>test</h3>
-        <p>asdfsdlfk asdlkf j</p>
+        <h3>What if I want a fixed width?</h3>
+        <p>Use the <css>width</css> property, of course...</p>
+        <div class="editor" style="height: 60%">
+          <div><textarea>
+              <style>
+                .thing {
+                  display: block;
+                  width: 100px;
+                  border: 1px solid green;
+                }
+              </style>
+
+              <div class="thing">
+                This box is 100px wide and text will wrap.
+              </div>
+
+              <div class="thing">
+                But I can't put a second box next to it!
+                The div still consumes the width of the
+                entire parent since it has display:block.
+              </div>
+
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>How can you put the 2 boxes next to each other?</p>
+      </article>
+
+
+      <article>
+        <h3>CSS annoyance #1: <css>width</css> doesn't always set the width.</h3>
+
+        <p>Did you notice that the "100 pixel box" was actually 102 pixels wide? (Go back and check)</p>
+
+        <br>
+        <div class="editor" style="height:300px">
+          <div><textarea>
+              <style>
+                .thing {
+                  width: 100px;
+                  border: 3px solid blue;
+                  margin-left: 50px;
+                  margin-top: 100px;
+                  padding-left: 10px;
+                  padding-right: 40px;
+                  padding-bottom: 20px;
+                }
+              </style>
+
+              <div class="thing">
+                CSS says this is 100 pixels wide.
+                Chrome says it's 156 pixels wide.
+                And it takes up 206 pixels.
+              </div>
+
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>Setting the <css>width</css> property sets the width of the <b>content</b>, not the whole container!</p>
+
+      </article>
+
+      <article class="smaller">
+        <h3>What we know so far about <css>width</css></h3>
+        <ul>
+
+          <li>You can set the <css>width</css> of a <css>block</css>
+            element, but it still eats the parent's full width.
+          <li>You can't set the <css>width</css> of
+            an <css>inline</css> element; it's totally meaningless.
+        </ul>
+        <br>
+        So how the heck do you do this?
+        <br><br>
+
+        <center>
+          <div style="background:#f17a22; display:inline-block; padding: 20px; width: 100px; height: 100px;">This is a box!</div>
+          <div style="background:#08a0dc; display:inline-block; padding: 20px; width: 100px; height: 100px;">This is a box!</div>
+          <div style="background:#83bc3c; display:inline-block; padding: 20px; width: 100px; height: 100px;">This is a box!</div>
+          <div style="background:#ffd701; display:inline-block; padding: 20px; width: 100px; height: 100px;">This is a box!</div>
+        </center>
+        <br>
+        We need to:
+        <ul>
+          <li>Set a fixed width, like <css>block</css></li>
+          <li>Put elements side by side, like <css>inline</css></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Enter <css>display: inline-block</css></h3>
+        <br>
+        <div class="editor" style="height: 40%">
+          <div><textarea>
+              <style>
+                .box {
+                  display: inline-block;
+                  width: 100px;
+                  height: 100px;
+                  border: 1px solid black;
+                  background: lightgray;
+                }
+              </style>
+
+              <div class="box">Here is a box!</div>
+              <div class="box">And another!</div>
+              <div class="box">Hooray!</div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <ul>
+          <li>Lets you specify <css>width</css> and <css>height</css>, like <css>block</css></li>
+          <li>Lays out horizontally, like <css>inline</css></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Your turn</h3>
       </article>
     </section>
   </body>

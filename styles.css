@@ -420,6 +420,20 @@ code {
   color: black;
 }
 
+css {
+  font-size: 95%;
+  font-family: 'Droid Sans Mono', 'Courier New', monospace;
+  color: #08a0dc;
+  font-weight: bold;
+}
+
+tag {
+  font-size: 95%;
+  font-family: 'Droid Sans Mono', 'Courier New', monospace;
+  color: #f17a22;
+  font-weight: bold;
+}
+
 iframe {
   width: 100%;
 
