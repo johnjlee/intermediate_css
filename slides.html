@@ -358,8 +358,75 @@
         </ul>
       </article>
 
-      <article>
+      <article class="smaller">
         <h3>Your turn</h3>
+
+        <style>
+          .morse-dot, .morse-dash {
+            background: #08a0dc;
+            height: 30px;
+            padding: 0;
+            display: inline-block;
+          }
+          .morse-dot {
+            width: 30px;
+          }
+          .morse-dash {
+            width: 100px;
+          }
+          .morse-round {
+            border-radius: 20px;
+          }
+        </style>
+        <p>1. Create two CSS classes, <code>dot</code>
+        and <code>dash</code>, so that:</p>
+          <table border=0 cellspacing=0 cellpadding=0>
+            <tr><td style="border: 0; vertical-align: middle" valign="middle">
+                <code>&lt;div class="dot"&gt;&lt;/div&gt;</code><br>
+                <code>&lt;div class="dot"&gt;&lt;/div&gt;</code><br>
+                <code>&lt;div class="dash"&gt;&lt;/div&gt;</code><br>
+                <code>&lt;div class="dot"&gt;&lt;/div&gt;</code><br>
+              </td>
+              <td style="border: 0; vertical-align: middle" valign="middle">produces:</td>
+              <td style="border: 0; vertical-align: middle" valign="middle">
+                <div class="morse-dot"></div>
+                <div class="morse-dot"></div>
+                <div class="morse-dash"></div>
+                <div class="morse-dot"></div>
+                <div align="center">or</div>
+                <div class="morse-dot morse-round"></div>
+                <div class="morse-dot morse-round"></div>
+                <div class="morse-dash morse-round"></div>
+                <div class="morse-dot morse-round"></div>
+              </td>
+          </table>
+
+        <p>2. The flag of France: 200px wide, 33%-wide segments:</p>
+        <style>
+          .french-flag-part {
+            width: 33%;
+            height: 100%;
+            display: inline-block;
+          }
+        </style>
+        <center>
+          <div style="height: 150px; width: 200px; border: 1px solid black; font-size: 0">
+            <div class="french-flag-part" style="background: blue"></div>
+            <div class="french-flag-part" style="background: white"></div>
+            <div class="french-flag-part" style="background: red"></div>
+          </div>
+        </center>
+
+        <p>3. Two bars, 50% blue and 50% red. Text inside each bar has
+        a 30-pixel left padding.</p>
+
+        <div style="background:gray; width: 100%">
+          <div style="width: 50%; display: inline-block; background: blue">
+            <div style="padding-left: 50px">Blue</div>
+          </div><div style="width: 50%; display: inline-block; background: yellow"><div style="padding-left: 50px">Yellow</div>
+          </div>
+        </div>
+
       </article>
     </section>
   </body>
