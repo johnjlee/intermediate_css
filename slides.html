@@ -29,6 +29,7 @@
 
     <section class='slides layout-regular'>
 
+      <!-- SECTION 0: BACKGROUND -->
       <article>
         <h1>
           <div style="width: 500px; height: 150px; border:1px solid black; position: relative">
@@ -204,6 +205,7 @@
         </div>
       </article>
 
+      <!-- SECTION 1: DISPLAY -->
       <article>
         <h3>The <css>display</css> property</h3>
         <br>
@@ -331,7 +333,7 @@
       </article>
 
       <article>
-        <h3>Enter <css>display: inline-block</css></h3>
+        <h3>Enter <css>display:inline-block</css></h3>
         <br>
         <div class="editor" style="height: 40%">
           <div><textarea>
@@ -401,10 +403,10 @@
               </td>
           </table>
 
-        <p>2. The flag of France: 200px wide, 33%-wide segments:</p>
+        <p>2. The flag of France: 200px wide, 150px tall, 33%-wide segments:</p>
         <style>
           .french-flag-part {
-            width: 33%;
+            width: 33.33333333%;
             height: 100%;
             display: inline-block;
           }
@@ -426,8 +428,288 @@
           </div><div style="width: 50%; display: inline-block; background: yellow"><div style="padding-left: 50px">Yellow</div>
           </div>
         </div>
-
       </article>
+
+      <article>
+         <div class="editor" style="height:100%">
+          <div><textarea>
+              <style>
+
+              </style>
+
+              Scratch area
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+      </article>
+
+      <!-- SECTION 2: FLOAT -->
+      <article>
+        <h3>The <css>float</css> property</h3>
+
+        <p><code>
+          &lt;img src="logo.png" style="float: left"&gt;
+        </code></p>
+
+        <p>
+          <img src="logo.png" style="float:left; margin-right: 20px">
+          This is a way to push content to the side of the page, while
+          still having the rest of the content wrap around it. The
+          rest of the content wraps around the floating element and
+          continues using the full width of the parent after it
+          reaches the bottom of the floating element. On the surface,
+          this looks easy to use, but as with anything in CSS, it
+          comes with a lot of annoyances and weird corner cases.
+        </p>
+      </article>
+
+
+      <article>
+        <h3>Weird case #1: Two floating elements</h3>
+
+        <p>This looks innocent enough... until you add more text.</p>
+        <div class="editor" style="height:300px">
+          <div><textarea>
+              <style>
+                .left { float: left; }
+                .right { float: right; }
+              </style>
+
+              <img src="moretext.png" class="left">
+              Hello
+              <img src="moretext.png" class="right">
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <br />
+        How do you fix this?
+      </article>
+
+
+      <article>
+        <h3>Weird case #2: Two floating elements... again</h3>
+
+        <p>This seems innocent... until you see what it looks like.</p>
+        <div class="editor" style="height:400px">
+          <div><textarea>
+              <style>
+                /* Remove this line to reveal! */
+                body { opacity: 0 }
+
+                .blogpost { }
+                .left { float: left }
+              </style>
+
+              <div class="blogpost">
+                <img src="longcat.png" class="left">
+                This is blog post #1 about a cat. Each
+                blog post has a floating image.
+              </div>
+
+              <div class="blogpost">
+                <img src="moretext.png" class="left">
+                Here's blog post #2. Since this is a
+                lot of text, it ought to wrap around
+                the relatively short image. It is
+                definitely not as tall as the cat
+                from blog post #1. Yeah let's make
+                sure we wrap around.
+              </div>
+
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <br />
+
+        If only there were a way to ensure that <tag>.blogpost</tag>
+        could stay <css>clear</css> of any floats...
+      </article>
+
+
+      <article>
+        <h3>Weird case #3: Floating, but not wrapping?</h3>
+
+        <div class="editor" style="height:400px">
+          <div><textarea>
+              <style>
+                .left { float: left; }
+                .text { display: block;}
+              </style>
+
+              <img src="moretext.png" class="left">
+              <div class="text">
+                I want the image to float, but I want
+                to make sure that this text stays aligned
+                properly. The left edge of this text should
+                stay along the right edge of the image.
+                I don't want any text to be under the image,
+                BUT TOO BAD IT'S GONNA HAPPEN... even though
+                I've set the text to be display:block. How
+                do I fix this?
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <br />
+
+        If you know the answer to this, then you probably don't even
+        need to be in this class.
+      </article>
+
+      <article class="smaller">
+        <h3>Makes no sense to you? Join the club!</h3>
+
+        <p>This is what <css>overflow:hidden</css> is <b>supposed</b>
+        to be used for:
+          <div class="editor" style="height:200px">
+            <div><textarea>
+              <style>
+                .box {
+                  overflow: hidden;
+                  border: 1px solid black;
+                  width: 100px;
+                  height: 50px;
+                }
+              </style>
+
+              <div class="box">
+                Here's some text that will overflow the box!
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>
+          Using <css>overflow:hidden</css> to fix the float problem is
+          an abuse of the CSS spec, but it's the easiest and most
+          common way to do it. Most people don't understand why it
+          works.
+        </p>
+
+
+        <p>
+          In a nutshell, a using <css>overflow:hidden</css> creates a
+          new <b>block formatting context</b>. Block formatting
+          contexts cannot overlap floats. Other things
+          (including <css>display:inline-block</css>) create block
+          formatting contexts too, but they do other stuff too that
+          makes it not suitable to fix the float problem.
+        </p>
+
+        <p>
+          One day, some developers noticed
+          that <css>overflow:hidden</css> happens to create a block
+          formatting context, but doesn't do much else. And now it's
+          used all over the place.
+        </p>
+
+        <p>
+          <a href="http://www.w3.org/TR/CSS2/visuren.html#block-formatting">http://www.w3.org/TR/CSS2/visuren.html#block-formatting</a>
+        </p>
+      </article>
+
+
+      <article class="smaller">
+        <h3>Your turn</h3>
+
+        <style>
+          .float-demo-left {
+            float: left;
+            width: 200px;
+            margin-right: 20px;
+            font-size: 18px;
+            line-height: 24px;
+          }
+          .float-demo-center {
+            overflow:hidden;
+            font-size: 18px;
+            line-height: 24px;
+          }
+          .float-demo-right {
+            float: right;
+            width: 200px;
+            margin-left: 20px;
+            font-size: 18px;
+            line-height: 24px;
+          }
+          .float-demo-clear {
+            clear: both;
+          }
+        </style>
+        <p>Make a 3-column layout. Left and right columns are fixed at
+          100px, and the middle column takes up the rest.</p>
+
+        <p>
+          <div class="float-demo-clear">
+            <hr>
+            <div class="float-demo-left">30 Rock</div>
+            <div class="float-demo-right">Season 6</div>
+            <div class="float-demo-center">Tina Fey, Alec Baldwin, Tracy Morgan, Jane Krakowski, Jack McBrayer, Judah Friedlander</div>
+          </div>
+          <div class="float-demo-clear">
+            <hr>
+            <div class="float-demo-left">Teenage Mutant Ninja Turtles: Turtles in Time: Limited Edition</div>
+            <div class="float-demo-right">1990</div>
+            <div class="float-demo-center">Turtles, Rat</div>
+          </div>
+          <div class="float-demo-clear">
+            <hr>
+            <div class="float-demo-left">Star Wars</div>
+            <div class="float-demo-right">Episode 4</div>
+            <div class="float-demo-center">George Lucas</div>
+          </div>
+        </p>
+      </article>
+
+      <article>
+         <div class="editor" style="height:100%">
+          <div><textarea>
+              <!-- Fill this in! -->
+              <style>
+              </style>
+
+              <div>
+                30 Rock
+              </div>
+              <div>
+                Tina Fey, Alec Baldwin, Tracy Morgan,
+                Jane Krakowski, Jack McBrayer,
+                Judah Friedlander
+              </div>
+              <div>
+                Season 6
+              </div>
+
+              <hr>
+
+              <div>
+                Teenage Mutant Ninja Turtles:
+                Turtles in Time: Limited Edition
+              </div>
+              <div>
+                Turtles, Rat
+              </div>
+              <div>
+                1990
+              </div>
+
+              <hr>
+
+              <div>Star Wars</div>
+              <div>George Lucas</div>
+              <div>Episode 4</div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+      </article>
+
+      <!-- SECTION 3: POSITION -->
+
+      <!-- SECTION 4: CENTERING -->
     </section>
+
   </body>
 </html>
