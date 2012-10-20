@@ -419,13 +419,13 @@
           </div>
         </center>
 
-        <p>3. Two bars, 50% blue and 50% red. Text inside each bar has
+        <p>3. Two bars: 50% blue, 50% yellow. Text inside each bar has
         a 30-pixel left padding.</p>
 
         <div style="background:gray; width: 100%">
           <div style="width: 50%; display: inline-block; background: blue">
-            <div style="padding-left: 50px">Blue</div>
-          </div><div style="width: 50%; display: inline-block; background: yellow"><div style="padding-left: 50px">Yellow</div>
+            <div style="padding-left: 50px">Hello</div>
+          </div><div style="width: 50%; display: inline-block; background: yellow"><div style="padding-left: 50px">World</div>
           </div>
         </div>
       </article>
@@ -815,6 +815,235 @@
               <div class="box"></div>
           </textarea></div>
           <div><iframe></iframe></div>
+      </article>
+
+      <article>
+        <h3>Absolute positioning</h3>
+
+        <p><css>position:absolute</css> lets you specify the position
+          of an element relative to its containing block.</p>
+
+        <div class="editor" style="height:350px">
+          <div><textarea>
+              <style>
+                .box {
+                  border: 1px solid red;
+                  width: 100px;
+                  height: 100px;
+                  position: absolute;
+                }
+
+                .pos1 { top: 25px; left: 100px; }
+                .pos2 { top: 0px; right: 0px; }
+                .pos3 { top: 50%; left: 50%; }
+              </style>
+
+              <div class="box pos1">Box 1</div>
+              <div class="box pos2">Box 2</div>
+              <div class="box pos3">Box 3</div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+      </article>
+
+      <article>
+        <h3>A puzzle</h3>
+
+        <p>How would you make this?</p>
+        <br>
+        <center>
+          <div style="background: #999; width: 200px; height: 200px; position: relative; border: 1px solid black;">
+            <div style="position: absolute; bottom: 0; right: 0; background: teal; width: 70px; height: 70px; "></div>
+          </div>
+        </center>
+
+        <p>Seems easy enough...</p>
+      </article>
+
+      <article>
+        <h3>Easy?</h3>
+
+        <p>Of course not. This is CSS.</p>
+        <br>
+        <div class="editor" style="height:420px">
+          <div><textarea>
+              <style>
+                /* Remove this to reveal! */
+                body { opacity: 0; }
+
+                .outer {
+                  background: gray;
+                  width: 200px;
+                  height: 200px;
+                }
+
+                .inner {
+                  background: teal;
+                  width: 70px;
+                  height: 70px;
+
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                }
+              </style>
+
+              <div class="outer">
+                <div class="inner"></div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+      </article>
+
+      <article class="smaller">
+        <h3>CSS annoyance #358: Containing blocks</h3>
+
+        <p>The containing block of an element
+        with <css>position:absolute</css> is <b>not</b> necessarily
+          the parent element. It's the <b>first</b> ancestor element that
+          has <css>position:absolute</css>
+          or <css>position:relative</css> <small>(... sort of)</small>.</p>
+
+        <p><a href="http://www.w3.org/TR/CSS21/visudet.html#containing-block-details">http://www.w3.org/TR/CSS21/visudet.html#containing-block-details</a></p>
+
+       <div class="editor" style="height:430px">
+          <div><textarea>
+              <style>
+                .outer {
+                  background: gray;
+                  width: 300px;
+                  height: 300px;
+                  position: relative;
+                }
+
+                .mid {
+                  background: green;
+                  width: 180px;
+                  height: 180px;
+                }
+
+                .inner {
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                }
+              </style>
+
+              <div class="outer">
+                <div class="mid">
+                  <img class="inner" src="contain.png" />
+                </div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+      </article>
+
+      <article>
+        <h3>One more: <css>position:fixed</css></h3>
+
+        <p>It's like <css>position:absolute</css>, except "containing
+          block" means something entirely different.</p>
+
+        <div class="editor" style="height:330px">
+          <div><textarea>
+              <style>
+                .menu {
+                  position: fixed;
+                  top: 0;
+                  right: 0;
+                  width: 200px;
+                  height: 200px;
+                  background: orange;
+                }
+              </style>
+
+              <div class="menu"></div>
+              1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>
+              1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>
+              1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>
+              1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>
+              1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+        <p>* Be careful on mobile browsers!</p>
+      </article>
+
+      <article class="smaller">
+        <h3>Your turn</h3>
+        <p>1. Overlap 2 copies of the same text to make a fake red/blue 3D effect.</p>
+
+        <style>
+          .pos-abs-3d1 {
+            position: absolute;
+            color: blue;
+            opacity: 0.5;
+            font-weight: bold;
+          }
+          .pos-abs-3d2 {
+            color: red;
+            position: relative;
+            left: 5px;
+            top: 1px;
+            opacity: 0.5;
+            font-weight: bold;
+          }
+        </style>
+          <div style="position: relative; padding: 2px; border: 1px solid black">
+
+            <div class="pos-abs-3d1">
+              Here's some fake 3D text!
+            </div>
+            <div class="pos-abs-3d2">
+              Here's some fake 3D text!
+            </div>
+          </div>
+          <p><small>(Hint: use <css>opacity:0.5</css> on both copies)</small></p><br>
+        <p>2. Make a class <code>tab</code>, so that putting it inside a div will attach a tab below it.</p>
+        <center>
+          <style>
+            .pos-abs-tab {
+              position: absolute;
+              top: 100%;
+              right: 0;
+              border: 1px solid black;
+              padding: 10px;
+            }
+
+            .pos-abs-box {
+              position: relative;
+              background: #676767;
+              border: 1px solid black;
+              width: 200px;
+              height: 100px;
+              display: inline-block;
+            }
+          </style>
+
+          <code style="display: inline-block; text-align: left; font-size: 20px; line-height: 22px; margin-right: 50px;">
+            &lt;div class="box"&gt;<br>
+            &nbsp;&nbsp;&lt;div class="tab"&gt;text!&lt;/div&gt;<br>
+            &lt;/div&gt;
+          </code>
+          <div class="pos-abs-box">
+            <div class="pos-abs-tab">
+              text!
+            </div>
+          </div>
+        </center>
+        <br /><br />
+        <p>3. On a 100x100 box, make a 50x50 box centered on the corner.<br><br>
+          <center>
+            <div style="width: 100px; height: 100px; background: #f15a22; position: relative;">
+              <div style="width: 50px; height: 50px; position: absolute; top: 0; right: 0">
+                <div style="position: relative; width: 50px; height: 50px; background: green; left: 25px; top: -25px;">
+                </div>
+              </div>
+            </div>
+          </center>
+
 
       </article>
       <!-- SECTION 4: CENTERING -->
