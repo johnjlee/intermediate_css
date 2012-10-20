@@ -615,6 +615,56 @@
       <article class="smaller">
         <h3>Your turn</h3>
 
+        <p>1. Make a 2-column layout (50% each). The heights of these
+           columns can be anything, but we want a footer on the page
+           that stays below whichever is taller.</p>
+
+        <style>
+          .float-demo-2-container {
+            width: 40%;
+            display: inline-block;
+          }
+          .float-demo-2-separator {
+            width: 1px;
+            height: 120px;
+            vertical-align: top;
+            background: black;
+            display: inline-block;
+          }
+
+          .float-demo-2-left {
+            float: left;
+            background: #f17a22;
+            width: 50%;
+          }
+          .float-demo-2-right {
+            float: right;
+            background: #ffd701;
+            width: 50%;
+          }
+          .float-demo-2-footer {
+            clear: both;
+          }
+        </style>
+
+        <center>
+          <div class="float-demo-2-container">
+            <div class="float-demo-2-left">Short box</div>
+            <div class="float-demo-2-right">Loooong box</div>
+            <div class="float-demo-2-footer">footer</div>
+          </div>
+          <div class="float-demo-2-separator">&nbsp;</div>
+          <div class="float-demo-2-container">
+            <div class="float-demo-2-left">Loooong box</div>
+            <div class="float-demo-2-right">Short box</div>
+            <div class="float-demo-2-footer">footer</div>
+          </div>
+        </center>
+        <p><small>The code for these two examples is exactly the same; only
+        the text is different.</small></p>
+
+        <hr width="50%">
+
         <style>
           .float-demo-left {
             float: left;
@@ -622,11 +672,13 @@
             margin-right: 20px;
             font-size: 18px;
             line-height: 24px;
+            color: #d68a59;
           }
           .float-demo-center {
             overflow:hidden;
             font-size: 18px;
             line-height: 24px;
+            color: #d68a59;
           }
           .float-demo-right {
             float: right;
@@ -634,14 +686,14 @@
             margin-left: 20px;
             font-size: 18px;
             line-height: 24px;
+            color: #d68a59;
           }
           .float-demo-clear {
             clear: both;
           }
         </style>
-        <p>Make a 3-column layout. Left and right columns are fixed at
+        <p>2. Make a 3-column layout. Left and right columns are fixed at
           100px, and the middle column takes up the rest.</p>
-
         <p>
           <div class="float-demo-clear">
             <hr>
@@ -667,7 +719,7 @@
       <article>
          <div class="editor" style="height:100%">
           <div><textarea>
-              <!-- Fill this in! -->
+              <!-- Starter code for #2. Fill this in! -->
               <style>
               </style>
 
@@ -707,7 +759,64 @@
       </article>
 
       <!-- SECTION 3: POSITION -->
+      <article>
+        <h3>The <css>position</css> property</h3>
 
+        <style>
+          .position-box {
+            width: 100px;
+            height: 100px;
+            background: #83bc3c;
+            display: inline-block;
+            border: 3px solid black;
+          }
+        </style>
+
+        <p>Here are 3 boxes:</p>
+        <div class="position-box"></div>
+        <div class="position-box"></div>
+        <div class="position-box"></div>
+        <br />
+        <p><b>Our goal</b>: kick the middle box a little bit, while keeping
+        everything else where it is:</p>
+        <div class="position-box"></div>
+        <div class="position-box" style="position:relative; top: 10px; left: 20px"></div>
+        <div class="position-box"></div>
+      </article>
+
+      <article>
+        <h3>Using <css>position:relative</css> with boxes</h3>
+
+        <p>To move something <b>relative</b> to where it would be
+        normally placed, use <css>position:relative</css> with
+          <css>left</css>, <css>right</css>, <css>top</css>,
+          and/or <css>bottom</css>.
+
+         <div class="editor" style="height:350px">
+          <div><textarea>
+              <style>
+                .box {
+                  display: inline-block;
+                  width: 100px;
+                  height: 100px;
+                  background: green;
+                  border: 2px solid black;
+                }
+
+                .kicked {
+                  position: relative;
+                  left: 20px;
+                  top: 10px;
+                }
+              </style>
+
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+
+      </article>
       <!-- SECTION 4: CENTERING -->
     </section>
 
