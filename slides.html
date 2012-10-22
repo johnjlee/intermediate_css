@@ -48,6 +48,35 @@
       </article>
 
       <article>
+        <h3>Disclaimer for people who stumbled on this</h3>
+
+        <p>These slides were originally designed to be part of a
+          workshop. You're free to use these as a reference, but there
+          are bits of information or insight that might not be in the
+          slides, but rather part of workshop exercises.
+        </p>
+
+        <p>
+          As such, these slides are probably not the best go-to
+          reference, especially if you didn't attend the workshop.
+        </p>
+
+        <p>
+          CSS has a lot of annoyances, and some of its horrors are
+          best shown in live demos, not just from reading about it.
+          In a nutshell, if you did a Google search and found these
+          slides -- sorry, it probably won't help you all that much.
+        </p>
+
+        <p>
+          But if you do want to tackle these exercises for yourself,
+          and have any questions, feel free to e-mail me at
+          jjl@jjl.nu.
+        </p>
+      </article>
+
+
+      <article>
         <h3>What we'll cover</h3>
         <ul>
           <li>How browsers render some CSS properties</li>
@@ -63,6 +92,7 @@
           <li>CSS3 transitions/animations</li>
           <li>3D transforms</li>
           <li>Making things work in old versions of IE</li>
+        </ul>
       </article>
 
       <article>
@@ -403,7 +433,17 @@
               </td>
           </table>
 
-        <p>2. The flag of France: 200px wide, 150px tall, 33%-wide segments:</p>
+        <p>2. Two bars: 50% blue, 50% yellow. Text inside each bar has
+        a 30-pixel left padding.</p>
+
+        <div style="background:gray; width: 100%">
+          <div style="width: 50%; display: inline-block; background: blue">
+            <div style="padding-left: 50px">Hello</div>
+          </div><div style="width: 50%; display: inline-block; background: yellow"><div style="padding-left: 50px">World</div>
+          </div>
+        </div>
+
+        <p>3. The flag of France: 200px wide, 150px tall, 33%-wide segments:</p>
         <style>
           .french-flag-part {
             width: 33.33333333%;
@@ -419,15 +459,7 @@
           </div>
         </center>
 
-        <p>3. Two bars: 50% blue, 50% yellow. Text inside each bar has
-        a 30-pixel left padding.</p>
 
-        <div style="background:gray; width: 100%">
-          <div style="width: 50%; display: inline-block; background: blue">
-            <div style="padding-left: 50px">Hello</div>
-          </div><div style="width: 50%; display: inline-block; background: yellow"><div style="padding-left: 50px">World</div>
-          </div>
-        </div>
       </article>
 
       <article>
@@ -1043,11 +1075,336 @@
               </div>
             </div>
           </center>
-
-
       </article>
-      <!-- SECTION 4: CENTERING -->
-    </section>
 
-  </body>
+      <article>
+         <div class="editor" style="height:100%">
+          <div><textarea>
+              <style>
+
+              </style>
+
+              Scratch area
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+      </article>
+
+      <!-- SECTION 4: CENTERING -->
+      <article>
+        <h3>Weird things you can do with <css>left</css>, <css>right</css>, <css>top</css>, <css>bottom</css></h3>
+        <p>Set the size of an element without using <css>width</css>
+        and <css>height</css>:</p>
+        <div class="editor" style="height:400px">
+          <div><textarea>
+              <style>
+                .outer {
+                  width: 300px;
+                  height: 200px;
+                  border: 1px solid black;
+                  position: relative;
+                }
+
+                .inner {
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  padding: 30px;
+                  border: 1px solid red;
+                }
+              </style>
+
+              <div class="outer">
+                <div class="inner">
+                  Inner padded text!
+                </div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>Wait, but couldn't I just do <css>width:100%</css>
+          and <css>height:100%</css> instead of this nonsense? Try it.</p>
+      </article>
+
+      <article>
+        <h3>What if we set <css>left</css>/<css>right</css>
+          AND <css>width</css>?</h3>
+
+        <p></p>
+
+        <div class="editor" style="height:400px">
+          <div><textarea>
+              <style>
+                .outer {
+                  width: 300px;
+                  height: 200px;
+                  border: 1px solid black;
+                  position: relative;
+                }
+
+                .inner {
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  width: 100px;
+                  border: 1px solid red;
+                }
+              </style>
+
+              <div class="outer">
+                <div class="inner">
+                  Inner text!
+                </div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        The browser sets the <b>margin</b> of the elements to keep
+        things consistent. Try setting <css>margin:auto</css>.
+      </article>
+
+      <article>
+        <h3>CSS annoyance #1052: Centering things is a pain</h3>
+
+        <p>You can use
+          the <css>position:absolute</css>/<css>margin:auto</css>
+          trick to center elements if:</p>
+        <ul>
+          <li>The <css>width</css>/<css>height</css> of the inner
+            element is explicitly set</li>
+          <li>You're OK with using <css>position:absolute</css>
+        </ul>
+
+        <p>This is probably the least painless way to center
+          something <b>vertically</b>, so always try to do it this way
+          if you can get away with it.</p>
+      </article>
+
+      <article>
+        <h3>Centering horizontally with <css>text-align</css></h3>
+
+        <p>Browsers can center text no problem. If you're not trying
+        to center text, you can tell the browser to pretend.</p>
+        <div class="editor" style="height:400px">
+          <div><textarea>
+              <style>
+                .outer {
+                  width: 300px;
+                  height: 200px;
+                  border: 1px solid black;
+                  text-align: center;
+                }
+
+                .inner {
+                  border: 1px solid red;
+                  display: inline-block;
+                }
+              </style>
+
+              <div class="outer">
+                <div class="inner">
+                  <img src="center.png">
+                </div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>Careful: the <css>text-align:center</css>
+          property propagates to all child elements.</p>
+      </article>
+
+
+      <article>
+        <h3>Centering text vertically with <css>line-height</css></h3>
+
+        <p>Browsers will vertically center text within their line boxes.</p>
+        <div class="editor" style="height:340px">
+          <div><textarea>
+              <style>
+                .outer {
+                  width: 300px;
+                  height: 200px;
+                  border: 1px solid black;
+                  line-height: 200px;
+                }
+
+                .inner {
+                  border: 1px solid red;
+                  display: inline-block;
+                }
+              </style>
+
+              <div class="outer">
+                <div class="inner">
+                  Inner text!
+                </div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>We're abusing <css>line-height</css> here to center the
+        text. To see what's really going on, add more text to
+        this.</p>
+      </article>
+
+      <article>
+        <h3>CSS annoyance #5837: Vertically centering non-text</h3>
+
+
+        <p>Let's vertically center an image.</p>
+        <p>Add <code>&lt;img src="vertical.png"&gt;</code> to the
+          previous example.
+        </p>
+      </article>
+
+      <article>
+        <h3><css>vertical-align:middle</css></h3>
+        <p></p>
+        <div class="editor" style="height:340px">
+          <div><textarea>
+              <style>
+                .inner {
+                  border: 1px solid red;
+                  display: inline-block;
+                  width: 200px;
+                  vertical-align: middle;
+                }
+              </style>
+
+              Here is some text!
+              <div class="inner">
+                Here is text inside the little box! It's
+                going to be vertically aligned with respect
+                to the surrounding text!
+                <img src="center.png">
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>This property controls how inline elements are laid out
+        (vertically) with respect to the surrounding text.</p>
+
+        <p>Unlike <css>text-align</css>, <css>vertical-align</css> does
+          <b>NOT</b> propagate to its child nodes.</p>
+      </article>
+
+      <article class="smaller">
+        <h3>Your turn</h3>
+
+        <p>1. Make a left-aligned paragraph in the center of a box.</p>
+        <center>
+          <div style="width: 400px; height: 200px; border: 1px solid black;">
+            <div style="border: 1px solid black; width: 200px;
+            text-align: left; font-size: 15px; line-height: 20px;">
+            This is a left-aligned paragraph! Lots of websites have
+            fixed-width content bodies which are centered in the
+            middle of the document where the paragraphs themselves
+            are left-aligned. It would just look weird for all of the text
+            in this div to be centered.</div>
+          </div>
+        </center>
+
+        <p>2. Vertically center some text <b><em>and</em></b> an image in a
+        200px-tall box (<code>notbad.png</code>).</p>
+        <center>
+          <div style="width: 400px; height: 200px; border: 1px solid black; line-height: 200px">
+            NOT <img style="vertical-align: middle" src="notbad.png"> BAD
+          </div>
+        </center>
+        <p>Bonus: What happens if you remove the text?<br>
+        <p>Bonus 2: Can you get it to work on a variable-height container?</p>
+      </article>
+
+
+      <article>
+        <h3>CSS annoyance #99999: Vertically centering non-text</h3>
+        <p></p>
+        <div class="editor" style="height:440px">
+          <div><textarea>
+              <style>
+                .box {
+                  border: 1px solid black;
+                  width: 320px;
+                  height: 400px;
+                  line-height: 400px;
+                }
+
+                .centered img {
+                  display: inline-block;
+                  vertical-align: middle;
+                }
+              </style>
+
+              <div class="box">
+                <div class="centered">
+                  <img src="99999.png">
+                </div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>Trick: Fake some text by adding a <tag>&amp;nbsp;</tag></p>
+      </article>
+
+      <article>
+        <h3>CSS annoyance #195836: Vertically centering in
+          variable-height containers</h3>
+        <p>What if you don't know the <css>line-height</css>?</p>
+        <div class="editor" style="height:440px">
+          <div><textarea>
+              <style>
+                .box {
+                  border: 1px solid black;
+                  width: 320px;
+                  height: 80%;
+                  /* line-height: ???? */
+                }
+
+                .centered img {
+                  display: inline-block;
+                  vertical-align: middle;
+                }
+
+                .mystery {
+                  display: inline-block;
+                  vertical-align: middle;
+                  height: 100%;
+                }
+              </style>
+
+              <div class="box">
+                <div class="centered">
+                  <img src="99999.png">
+                </div>
+              </div>
+          </textarea></div>
+          <div><iframe></iframe></div>
+        </div>
+
+        <p>Trick: Add an empty <tag>span</tag> with <css>height:100%</css>.
+      </article>
+
+
+      <article class="smaller">
+        <h3>Summary of centering</h3>
+
+        <p><css>position:absolute</css> with <css>margin:auto</css></p>
+        <p>
+          <code>+</code> Works horizontally and vertically<br>
+          <code>-</code> Must know width and height<br>
+          <code>-</code> Breaks normal flow
+
+        </p>
+      </article>
+</section>
+
+</body>
 </html>
