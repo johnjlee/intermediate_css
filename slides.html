@@ -210,7 +210,7 @@
       <article class="smaller">
         <h3>Background: Check your knowledge</h3>
         <style>#backgroundcheck a:hover { color: red }</style>
-        <p>Use the editor below to recreate each of the following:</li>
+        <p>Use the editor below to recreate each of the following:</p>
         <ol>
           <li><div id="backgroundcheck" style="font-family:serif; color: blue; font-size:18px; text-decoration: none;"><a  style="text-decoration:none" href="http://google.com">A link that has no underline. (Bonus: make it turn red when you hover over it).</a></div></li>
           <li><span style="font-family:serif; color: black; font-size:18px; border: 3px solid red">Text with a thick red border</span></li>
@@ -1399,10 +1399,61 @@
         <p><css>position:absolute</css> with <css>margin:auto</css></p>
         <p>
           <code>+</code> Works horizontally and vertically<br>
-          <code>-</code> Must know width and height<br>
+          <code>-</code> Must know width/height of child element<br>
           <code>-</code> Breaks normal flow
-
         </p>
+
+        <p><css>text-align:center</css></p>
+        <p>
+          <code>!</code> Horizontal centering only<br>
+          <code>+</code> Works on variable-width elements<br>
+          <code>-</code> Propagates to inner elements<br>
+        </p>
+
+        <p><css>line-height</css></p>
+        <p>
+          <code>!</code> Vertical centering<br>
+          <code>+</code> Easiest way to center text<br>
+          <code>-</code> Must know height of parent, but child height
+          can be variable<br>
+          <code>-</code> Annoying for centering non-text
+        </p>
+
+        <p><tag>span</tag> with <css>height:100%</css></p>
+        <p>
+          <code>!</code> Vertical centering<br>
+          <code>+</code> Works on variable height elements<br>
+          <code>-</code> Need to insert extra span which can take up space
+        </p>
+      </article>
+
+      <article class="smaller">
+        <h3>Your turn</h3>
+        <p>Recreate the annoying overlays that sites put in front of
+        their content. Then, use the Chrome inspector to delete it.</p><br>
+        <iframe src="fixed.html" width="100%" style="height: 400px"></iframe>
+      </article>
+
+      <article>
+         <div class="editor" style="height:100%">
+          <div><textarea>
+              <style>
+
+              </style>
+
+              Scratch area
+          </textarea></div>
+          <div><iframe></iframe></div>
+         </div>
+      </article>
+
+      <article>
+        <h3>The end?</h3>
+        link to feedback survey<br>
+        useful links to CSS spec<br>
+        what else is out there (css3, animations, transforms, html5, etc)<br>
+        contact info<br>
+        link to github for slide updates<br>
       </article>
 </section>
 
